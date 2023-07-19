@@ -8,8 +8,6 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    
     
     var flipCount = 0 {
         didSet {
@@ -26,7 +24,9 @@ class ViewController: UIViewController {
             button.setTitle(emoji, for: .normal)
         }
     }
-
+    
+    var emojiChoices = ["👻", "🎃", "☠️", "👽"]
+ 
     
 //    UI
 
@@ -34,11 +34,18 @@ class ViewController: UIViewController {
     
     
     
+    @IBOutlet var cardButtons: [UIButton]!
     
     @IBOutlet weak var flipCountLabel: UILabel!
     
     @IBAction func touchCard(_ sender: UIButton) {
         flipCount += 1
+        if let cardNumber = cardButtons.firstIndex(of: sender)  {
+            flipCard(withEmoji: emojiChoices[cardNumber] , on: sender)
+        }
     }
+    
+    
+    
     
 }

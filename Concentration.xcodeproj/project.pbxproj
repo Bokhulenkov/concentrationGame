@@ -56,15 +56,23 @@
 		11D4707B2A6530E700652FD7 /* Concentration */ = {
 			isa = PBXGroup;
 			children = (
-				11D4707C2A6530E700652FD7 /* AppDelegate.swift */,
+				11D470902A6531EB00652FD7 /* Supporting Files */,
 				11D4707E2A6530E700652FD7 /* SceneDelegate.swift */,
 				11D470802A6530E700652FD7 /* ViewController.swift */,
 				11D470822A6530E700652FD7 /* Main.storyboard */,
-				11D470852A6530E800652FD7 /* Assets.xcassets */,
-				11D470872A6530E800652FD7 /* LaunchScreen.storyboard */,
 				11D4708A2A6530E800652FD7 /* Info.plist */,
 			);
 			path = Concentration;
+			sourceTree = "<group>";
+		};
+		11D470902A6531EB00652FD7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				11D4707C2A6530E700652FD7 /* AppDelegate.swift */,
+				11D470852A6530E800652FD7 /* Assets.xcassets */,
+				11D470872A6530E800652FD7 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,11 +298,13 @@
 				DEVELOPMENT_TEAM = 68MSSNZ4P8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Concentration/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -318,11 +328,13 @@
 				DEVELOPMENT_TEAM = 68MSSNZ4P8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Concentration/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
