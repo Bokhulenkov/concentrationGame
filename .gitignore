@@ -8,6 +8,7 @@
 .DS_Store
 
 # Xcode per-user config
+*.pbxproj
 .swiftpm
 /.build
 /Packages
