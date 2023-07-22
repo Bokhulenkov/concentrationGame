@@ -27,7 +27,30 @@ class ViewController: UIViewController {
         }
     }
     
+    func updateViewFromModel() {
+        for index in cardButtons.indices {
+            let button = cardButtons[index]
+            let card = game.cards[index]
+            if card.isFaceUp {
+                button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                button.setTitle(emoji(for: card), for: .normal)
+            } else {
+                button.backgroundColor = card.isMatched ? #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 0) : #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+                button.setTitle(" ", for: .normal)
+            }
+        }
+    }
+    
+    func emoji(for card: Card) -> String {
+        if emoji[card.identifier] == nil, emojiChoices.count > 0 {
+            let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
+            emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
+        }
+        return emoji[card.identifier] ?? "?"
+    }
+    
     var emojiChoices = ["👻", "🎃", "☠️", "👽"]
+    var emoji = [Int: String]()
  
     
 //    UI
@@ -44,6 +67,7 @@ class ViewController: UIViewController {
         flipCount += 1
         if let cardNumber = cardButtons.firstIndex(of: sender)  {
             game.chooseCard(at: cardNumber)
+            updateViewFromModel()
         }
     }
     
