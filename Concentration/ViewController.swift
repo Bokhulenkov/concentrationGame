@@ -17,6 +17,7 @@ class ViewController: UIViewController {
         }
     }
     
+    
     func flipCard(withEmoji emoji: String, on button: UIButton){
         if button.currentTitle == emoji {
             button.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
@@ -38,6 +39,7 @@ class ViewController: UIViewController {
                 button.backgroundColor = card.isMatched ? #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 0) : #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
                 button.setTitle(" ", for: .normal)
             }
+            scoreLabel.text = "Score: \(game.scoreCount)"
         }
     }
     
@@ -60,8 +62,11 @@ class ViewController: UIViewController {
         ]
     
     lazy var emojiChoices = themeEmoji.randomElement()?.value ?? ["?"]
-  
     var emoji = [Int: String]()
+    
+    
+    
+    @IBOutlet weak var scoreLabel: UILabel!
     
     @IBAction func newGame(_ sender: UIButton) {
         flipCount = 0
@@ -81,19 +86,4 @@ class ViewController: UIViewController {
         }
     }
     
-    
-    
-    
 }
-
-
-/*
-"Fruits": (["🍏", "🍊", "🍓", "🍉", "🍇", "🍒", "🍌", "🥝", "🍆", "🍑", "🍋"],
-        "Faces" : (["😀", "😂", "🤣", "😃", "😄", "😅", "😆", "😉", "😊", "😋", "😎"],
-        "Activity": (["⚽️", "🏄‍♂️", "🏑", "🏓", "🚴‍♂️","🥋", "🎸", "🎯", "🎮", "🎹", "🎲"],
-        "Animals": (["🐶", "🐭", "🦊", "🦋", "🐢", "🐸", "🐵", "🐞", "🐿", "🐇", "🐯"],
-        "Christmas": (["🎅", "🎉", "🦌", "⛪️", "🌟", "❄️", "⛄️","🎄", "🎁", "🔔", "🕯"],
-        "Clothes": (["👚", "👕", "👖", "👔", "👗", "👓", "👠", "🎩", "👟", "⛱","🎽", "👘"],
-        "Halloween": (["💀", "👻", "👽", "🙀", "🦇", "🕷", "🕸", "🎃", "🎭","😈", "⚰"],,
-        "Transport": (["🚗", "🚓", "🚚", "🏍", "✈️", "🚜", "🚎", "🚲", "🚂", "🛴"]
-*/

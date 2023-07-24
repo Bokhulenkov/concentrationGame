@@ -12,6 +12,10 @@ class Concentration {
     
     var indexOfOneAndOnlyFaceUpCard: Int?
     
+    var scoreCount = 0
+    var seenCards = Set<Int>()
+    
+    
     func chooseCard(at index: Int){
         if !cards[index].isMatched {
             if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != index {
@@ -19,6 +23,17 @@ class Concentration {
                 if cards[matchIndex].identifier == cards[index].identifier {
                     cards[matchIndex].isMatched = true
                     cards[index].isMatched = true
+                    scoreCount += 2
+                } else {
+//                Penalty score labal
+                    if seenCards.contains(index){
+                        scoreCount -= 1
+                    }
+                    if seenCards.contains(matchIndex){
+                        scoreCount -= 1
+                    }
+                    seenCards.insert(index)
+                    seenCards.insert(matchIndex)
                 }
                 cards[index].isFaceUp = true
                 indexOfOneAndOnlyFaceUpCard = nil
