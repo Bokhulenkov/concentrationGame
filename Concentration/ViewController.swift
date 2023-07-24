@@ -58,6 +58,11 @@ class ViewController: UIViewController {
     
     
     
+    @IBAction func newGame(_ sender: UIButton) {
+        flipCount = 0
+        game.newGame()
+        updateViewFromModel()
+    }
     
     @IBOutlet var cardButtons: [UIButton]!
     
