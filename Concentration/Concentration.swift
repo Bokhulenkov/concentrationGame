@@ -37,6 +37,7 @@ class Concentration {
         for index in cards.indices {
             cards[index].isFaceUp = false
             cards[index].isMatched = false
+            cards.shuffle()
         }
     }
     
@@ -47,6 +48,6 @@ class Concentration {
             let card = Card()
             cards += [card, card]
         }
-//        TODO: Shuffle the cards
+        cards.shuffle()
     }
 }
