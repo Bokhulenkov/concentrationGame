@@ -9,7 +9,13 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    lazy var game = Concentration(numberOfPairsOrCards: (cardButtons.count + 1) / 2)
+    lazy var game = Concentration(numberOfPairsOrCards: numberOfPairsCards)
+    
+    var numberOfPairsCards: Int {
+        get {
+            return (cardButtons.count + 1) / 2
+        }
+    }
     
     func flipCard(withEmoji emoji: String, on button: UIButton){
         if button.currentTitle == emoji {
