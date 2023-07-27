@@ -8,9 +8,9 @@
 import Foundation
 
 class Concentration {
-    var cards = [Card]()
+    private(set) var cards = [Card]()
     
-    var indexOfOneAndOnlyFaceUpCard: Int? {
+    private var indexOfOneAndOnlyFaceUpCard: Int? {
         get {
             var foundIndex: Int?
             for index in cards.indices {
@@ -31,9 +31,9 @@ class Concentration {
         }
     }
     
-    var scoreCount = 0
+    private(set) var scoreCount = 0
     var seenCards = Set<Int>()
-    var flipCount = 0
+    private(set) var flipCount = 0
     
     func chooseCard(at index: Int){
         if !cards[index].isMatched {
@@ -63,7 +63,7 @@ class Concentration {
         }
     }
     
-     func newGame(){
+    func newGame(){
         for index in cards.indices {
             cards[index].isFaceUp = false
             cards[index].isMatched = false
@@ -75,6 +75,7 @@ class Concentration {
     
     
     init(numberOfPairsOrCards: Int) {
+        assert(numberOfPairsOrCards > 0, "Concentration.init (\(numberOfPairsOrCards)): you must have at least one pair of cards")
         for _ in 1...numberOfPairsOrCards{
             let card = Card()
             cards += [card, card]
