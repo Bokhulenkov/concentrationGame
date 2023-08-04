@@ -64,7 +64,8 @@ class ViewController: UIViewController {
     private var indexTheme = 0 {
         didSet {
             print(indexTheme, keys[indexTheme])
-            emojiChoices = themeEmoji[keys [indexTheme]] ?? []
+            titleLabel.text = "\(keys[indexTheme])"
+            emojiChoices = themeEmoji[keys [indexTheme]] ?? ["?"]
             emoji = [Int: String]()
         }
     }
@@ -73,6 +74,13 @@ class ViewController: UIViewController {
         Array(themeEmoji.keys)
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateViewFromModel()
+        indexTheme = keys.count.arc4random
+    }
+    
+    @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet private weak var scoreLabel: UILabel!
     
