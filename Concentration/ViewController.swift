@@ -61,12 +61,24 @@ class ViewController: UIViewController {
     private lazy var emojiChoices = themeEmoji.randomElement()?.value ?? ["?"]
     private var emoji = [Int: String]()
     
+    private var indexTheme = 0 {
+        didSet {
+            print(indexTheme, keys[indexTheme])
+            emojiChoices = themeEmoji[keys [indexTheme]] ?? []
+            emoji = [Int: String]()
+        }
+    }
+    
+    private var keys:[String] {
+        Array(themeEmoji.keys)
+    }
     
     
     @IBOutlet private weak var scoreLabel: UILabel!
     
     @IBAction private func newGame(_ sender: UIButton) {
         game.newGame()
+        indexTheme = keys.count.arc4random
         updateViewFromModel()
     }
     
