@@ -42,10 +42,10 @@ class ViewController: UIViewController {
     }
     
    private func emoji(for card: Card) -> String {
-        if emoji[card.identifier] == nil, emojiChoices.count > 0 {
-            emoji[card.identifier] = emojiChoices.remove(at: emojiChoices.count.arc4random)
+        if emoji[card] == nil, emojiChoices.count > 0 {
+            emoji[card] = emojiChoices.remove(at: emojiChoices.count.arc4random)
         }
-        return emoji[card.identifier] ?? "?"
+        return emoji[card] ?? "?"
     }
     
     typealias Theme = (emojiChoices: [String], backgroundColor: UIColor, cardBackColor: UIColor)
@@ -61,7 +61,7 @@ class ViewController: UIViewController {
         ]
     
     private lazy var emojiChoices = [String]()
-    private var emoji = [Int: String]()
+    private var emoji = [Card: String]()
     private var backgroundColor = UIColor.black
     private var cardBackColor = UIColor.orange
     
@@ -79,7 +79,7 @@ class ViewController: UIViewController {
             print(indexTheme, keys[indexTheme])
             titleLabel.text = "\(keys[indexTheme])"
             (emojiChoices, backgroundColor, cardBackColor) = themeEmoji[keys[indexTheme]] ?? (["?"], .black, .orange)
-            emoji = [Int: String]()
+            emoji = [Card: String]()
             updateAppearance()
         }
     }
