@@ -8,6 +8,7 @@
 import Foundation
 
 struct Concentration {
+    
     private(set) var cards = [Card]()
     
     private var indexOfOneAndOnlyFaceUpCard: Int? {
@@ -34,6 +35,15 @@ struct Concentration {
     private(set) var scoreCount = 0
     var seenCards = Set<Int>()
     private(set) var flipCount = 0
+    
+    init(numberOfPairsOrCards: Int) {
+        assert(numberOfPairsOrCards > 0, "Concentration.init (\(numberOfPairsOrCards)): you must have at least one pair of cards")
+        for _ in 1...numberOfPairsOrCards{
+            let card = Card()
+            cards += [card, card]
+        }
+        cards.shuffle()
+    }
     
     mutating func chooseCard(at index: Int){
         if !cards[index].isMatched {
@@ -72,14 +82,4 @@ struct Concentration {
          cards.shuffle()
     }
     
-    
-    
-    init(numberOfPairsOrCards: Int) {
-        assert(numberOfPairsOrCards > 0, "Concentration.init (\(numberOfPairsOrCards)): you must have at least one pair of cards")
-        for _ in 1...numberOfPairsOrCards{
-            let card = Card()
-            cards += [card, card]
-        }
-        cards.shuffle()
-    }
 }
