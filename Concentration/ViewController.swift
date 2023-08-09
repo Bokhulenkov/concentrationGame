@@ -30,7 +30,7 @@ private var emoji = [Card: String]()
 private var backgroundColor = UIColor.black
 private var cardBackColor = UIColor.orange
     
-    typealias Theme = (emojiChoices: [String], backgroundColor: UIColor, cardBackColor: UIColor)
+    typealias Theme = (emojiChoices: String, backgroundColor: UIColor, cardBackColor: UIColor)
     
     private var indexTheme = 0 {
         didSet {
