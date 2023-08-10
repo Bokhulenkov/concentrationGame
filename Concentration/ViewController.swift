@@ -30,6 +30,8 @@ private var emoji = [Card: String]()
 private var backgroundColor = UIColor.black
 private var cardBackColor = UIColor.orange
     
+    var attributedString = NSAttributedString()
+    
     typealias Theme = (emojiChoices: String, backgroundColor: UIColor, cardBackColor: UIColor)
     
     private var indexTheme = 0 {
@@ -58,7 +60,15 @@ private var cardBackColor = UIColor.orange
     
     @IBOutlet private var cardButtons: [UIButton]!
     
-    @IBOutlet private weak var flipCountLabel: UILabel!
+    @IBOutlet private weak var flipCountLabel: UILabel! {
+        didSet{
+            let attributes: [NSAttributedString.Key: Any] = [
+                .strokeWidth: 5,
+                .strokeColor: #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+            ]
+            attributedString = NSAttributedString(string: "Flips: \(game.flipCount)", attributes: attributes)
+        }
+    }
     
     @IBAction private func touchCard(_ sender: UIButton) {
         if let cardNumber = cardButtons.firstIndex(of: sender)  {
@@ -95,7 +105,8 @@ private var cardBackColor = UIColor.orange
                 button.setTitle(" ", for: .normal)
             }
             scoreLabel.text = "Score: \(game.scoreCount)"
-            flipCountLabel.text = "Flips: \(game.flipCount)"
+//            flipCountLabel.text = "Flips: \(game.flipCount)"
+            flipCountLabel.attributedText = attributedString
         }
     }
     
