@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     private lazy var game = Concentration(numberOfPairsOrCards: numberOfPairsCards)
     
     var numberOfPairsCards: Int {
-            return (cardButtons.count + 1) / 2
+        return (cardButtons.count + 1) / 2
     }
     
     private var themeEmoji = [
@@ -24,11 +24,11 @@ class ViewController: UIViewController {
         "Halloween": ("💀👻👽🙀🦇🕷🕸🎃🎭😈⚰", #colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1), #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)),
         "Transport": ("🚗🚓🚚🏍✈️🚜🚎🚲🚂🛴", #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1), #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1))
     ]
-
-private lazy var emojiChoices = " "
-private var emoji = [Card: String]()
-private var backgroundColor = UIColor.black
-private var cardBackColor = UIColor.orange
+    
+    private lazy var emojiChoices = " "
+    private var emoji = [Card: String]()
+    private var backgroundColor = UIColor.black
+    private var cardBackColor = UIColor.orange
     
     var attributedString = NSAttributedString()
     
@@ -47,7 +47,7 @@ private var cardBackColor = UIColor.orange
     private var keys: [String] {
         Array(themeEmoji.keys)
     }
-
+    
     
     @IBOutlet weak var newGameButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
@@ -61,12 +61,8 @@ private var cardBackColor = UIColor.orange
     @IBOutlet private var cardButtons: [UIButton]!
     
     @IBOutlet private weak var flipCountLabel: UILabel! {
-        didSet{
-            let attributes: [NSAttributedString.Key: Any] = [
-                .strokeWidth: 5,
-                .strokeColor: #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
-            ]
-            attributedString = NSAttributedString(string: "Flips: \(game.flipCount)", attributes: attributes)
+        didSet {
+            updateFlipCountLabel()
         }
     }
     
@@ -81,6 +77,15 @@ private var cardBackColor = UIColor.orange
         super.viewDidLoad()
         updateViewFromModel()
         indexTheme = keys.count.arc4random
+    }
+    
+    private func updateFlipCountLabel() {
+        let attributes: [NSAttributedString.Key: Any] = [
+            .strokeWidth: 5,
+            .strokeColor: #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+        ]
+        attributedString = NSAttributedString(string: "Flips: \(game.flipCount)", attributes: attributes)
+        flipCountLabel.attributedText = attributedString
     }
     
     func flipCard(withEmoji emoji: String, on button: UIButton){
@@ -105,12 +110,11 @@ private var cardBackColor = UIColor.orange
                 button.setTitle(" ", for: .normal)
             }
             scoreLabel.text = "Score: \(game.scoreCount)"
-//            flipCountLabel.text = "Flips: \(game.flipCount)"
-            flipCountLabel.attributedText = attributedString
+            updateFlipCountLabel()
         }
     }
     
-   private func emoji(for card: Card) -> String {
+    private func emoji(for card: Card) -> String {
         if emoji[card] == nil, emojiChoices.count > 0 {
             let randomStringIndex = emojiChoices.index(emojiChoices.startIndex, offsetBy: emojiChoices.count.arc4random)
             emoji[card] = String(emojiChoices.remove(at: randomStringIndex))
@@ -120,7 +124,6 @@ private var cardBackColor = UIColor.orange
     
     private func updateAppearance() {
         view.backgroundColor = backgroundColor
-        flipCountLabel.textColor = cardBackColor
         scoreLabel.textColor = cardBackColor
         titleLabel.textColor = cardBackColor
         newGameButton.setTitleColor(backgroundColor, for: .normal)
